@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParam, useNavigate } from "react-router-dom";
 
 function RecipeDetails() {
-  const { id } = useParams();
+  const { id } = useParam();
+  const navigate = useNavigate();
 
   const [recipe, setRecipe] = useState(null);
 
@@ -40,6 +41,12 @@ function RecipeDetails() {
 
   return (
     <main className="details-page">
+      <button
+  className="back-btn"
+  onClick={() => navigate(-1)}
+>
+  ← Back
+</button>
 
       <div className="details-header">
 
