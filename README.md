@@ -34,9 +34,9 @@ GitHub Repository: https://github.com/harshaavardh/recipe-finder
 - TheMealDB API
 - Local Storage
 - Vercel
-
 ## 📁 Project Structure
 
+```text
 src/
 ├── components/
 │   ├── CategoryFilter.jsx
@@ -54,7 +54,7 @@ src/
 ├── App.jsx
 ├── index.css
 └── main.jsx
-
+```
 ## ⚙️ Installation
 
 Clone the repository:
