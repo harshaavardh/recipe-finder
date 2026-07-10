@@ -1,16 +1,101 @@
-# React + Vite
+# 🍳 Recipe Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive Recipe Finder web application built with React and Vite. Users can search for recipes, explore recipes by category, view ingredients and cooking instructions, and save their favorite recipes.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Live Website: https://recipe-finder-phi-ten.vercel.app/
 
-## React Compiler
+## 💻 Source Code
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+GitHub Repository: https://github.com/harshaavardh/recipe-finder
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔍 Search recipes by name
+- 🍗 Browse recipes by category
+- 📖 View complete recipe details
+- 🥕 View ingredients and measurements
+- 👨‍🍳 Read cooking instructions
+- ❤️ Add recipes to favorites
+- 🗑️ Remove recipes from favorites
+- 💾 Save favorites using Local Storage
+- ⏳ Loading states and error handling
+- 📱 Responsive design
+- 🚫 Custom 404 page
+
+## 🛠️ Tech Stack
+
+- React
+- JavaScript
+- CSS
+- React Router
+- Vite
+- TheMealDB API
+- Local Storage
+- Vercel
+
+## 📁 Project Structure
+
+src/
+├── components/
+│   ├── CategoryFilter.jsx
+│   ├── Footer.jsx
+│   ├── Navbar.jsx
+│   ├── RecipeCard.jsx
+│   └── SearchBar.jsx
+│
+├── pages/
+│   ├── Favorites.jsx
+│   ├── Home.jsx
+│   ├── NotFound.jsx
+│   └── RecipeDetails.jsx
+│
+├── App.jsx
+├── index.css
+└── main.jsx
+
+## ⚙️ Installation
+
+Clone the repository:
+
+git clone https://github.com/harshaavardh/recipe-finder.git
+
+Move into the project folder:
+
+cd recipe-finder
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+## 🌐 API
+
+This project uses TheMealDB API to fetch recipe information, ingredients, categories, and cooking instructions.
+
+## 💡 What I Learned
+
+Through this project, I practiced:
+
+- React functional components
+- React Hooks: useState and useEffect
+- Props and component communication
+- Fetching data from REST APIs
+- Async/Await
+- React Router and dynamic routes
+- Local Storage
+- Conditional rendering
+- Error and loading state handling
+- Responsive CSS design
+- Git and GitHub workflow
+- Deployment with Vercel
+
+## 👨‍💻 Author
+
+Harsha Vardhan
+
+GitHub: https://github.com/harshaavardh
