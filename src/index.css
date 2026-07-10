@@ -287,4 +287,18 @@ body {
 
 .back-btn:hover {
   background: #111;
+}.favorite-btn.saved {
+  background: #2a9d8f !important;
+}
+
+.toast {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  background: #222;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
