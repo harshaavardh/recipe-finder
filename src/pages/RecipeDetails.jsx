@@ -1,28 +1,62 @@
 import { useEffect, useState } from "react";
-import { useParam, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function RecipeDetails() {
-  const { id } = useParam();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [recipe, setRecipe] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function getRecipe() {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-      );
+      setLoading(true);
+      setError("");
 
-      const data = await response.json();
+      try {
+        const response = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+        );
 
-      setRecipe(data.meals[0]);
+        const data = await response.json();
+
+        if (data.meals && data.meals.length > 0) {
+          setRecipe(data.meals[0]);
+        } else {
+          setError("Recipe not found");
+        }
+      } catch (error) {
+        console.log(error);
+        setError("Unable to load recipe");
+      } finally {
+        setLoading(false);
+      }
     }
 
     getRecipe();
   }, [id]);
 
-  if (!recipe) {
-    return <h2 className="loading">Loading...</h2>;
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <p>Loading recipe...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="recipe-error">
+        <h1>😕</h1>
+        <h2>{error}</h2>
+
+        <button onClick={() => navigate("/")}>
+          Go Back Home
+        </button>
+      </main>
+    );
   }
 
   const ingredients = [];
@@ -33,8 +67,8 @@ function RecipeDetails() {
 
     if (ingredient && ingredient.trim() !== "") {
       ingredients.push({
-        ingredient: ingredient,
-        measure: measure
+        ingredient,
+        measure
       });
     }
   }
@@ -42,14 +76,13 @@ function RecipeDetails() {
   return (
     <main className="details-page">
       <button
-  className="back-btn"
-  onClick={() => navigate(-1)}
->
-  ← Back
-</button>
+        className="back-btn"
+        onClick={() => navigate(-1)}
+      >
+        ← Back
+      </button>
 
       <div className="details-header">
-
         <img
           src={recipe.strMealThumb}
           alt={recipe.strMeal}
@@ -66,11 +99,9 @@ function RecipeDetails() {
             <strong>Area:</strong> {recipe.strArea}
           </p>
         </div>
-
       </div>
 
       <section className="ingredients-section">
-
         <h2>Ingredients</h2>
 
         <ul>
@@ -80,17 +111,12 @@ function RecipeDetails() {
             </li>
           ))}
         </ul>
-
       </section>
 
       <section className="instructions-section">
-
         <h2>Instructions</h2>
-
         <p>{recipe.strInstructions}</p>
-
       </section>
-
     </main>
   );
 }
